@@ -1,6 +1,11 @@
 <main class="w-1/2 px-4 py-8 mx-auto my-6 rounded bg-slate-600">
   <section class="stop">
-    <form [formGroup]="formGroup" novalidate class="flex gap-2">
+    <form
+      (ngSubmit)="intercept()"
+      [formGroup]="formGroup"
+      novalidate
+      class="flex gap-2"
+    >
       <p>
         <input
           placeholder="`stop` to enable button"
@@ -19,5 +24,32 @@
       </p>
     </form>
   </section>
-  <section class="output"></section>
+
+  <section class="mt-8 rounded output">
+    <ul class="grid grid-rows-[repeat(25, 1fr)] grid-cols-4 gap-1">
+      <ng-container *ngFor="let value of values">
+        <li
+          class="px-2 mx-2 mt-1 font-bold rounded odd:bg-slate-200 text-slate-900 even:bg-slate-400"
+        >
+          @if (value === 'Fizz') {
+          <span class="px-2 text-white bg-green-600">
+            {{ value }}
+          </span>
+          } @else if (value === 'Buzz') {
+          <span class="px-2 text-white bg-orange-600">
+            {{ value }}
+          </span>
+          } @else if (value === 'FizzBuzz') {
+          <span class="px-2 text-white bg-red-600">
+            {{ value }}
+          </span>
+          } @else {
+          <span>
+            {{ value }}
+          </span>
+          }
+        </li>
+      </ng-container>
+    </ul>
+  </section>
 </main>
