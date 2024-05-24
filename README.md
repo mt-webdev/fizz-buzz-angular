@@ -8,8 +8,8 @@ Roughly spent **1h 15min** on this project from zero to hero, I really appreciat
 it ensures to have knowledge about RxJs, async operations, testing & just a little bit of CSS. I chose
 `Tailwind` to save even more time, to allow rapid prototyping.
 
-The not so nice thing about my solution is, that I spread the actual `state` across to many layers
-in my opinion. But I am wearing our little one in a baby carrier in front of me right at this moment :-)
+The not so nice thing about my solution is, that I spread the actual `state` across too many layers
+in my opinion (meaning `game$` & `values` array). But I am wearing our little one in a baby carrier in front of me right at this moment :-)
 Sorry for the excuse.
 
 ## Services
