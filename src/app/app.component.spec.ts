@@ -14,18 +14,49 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'fizz-buzz-angular' title`, () => {
+  it(`should have initial empty array`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('fizz-buzz-angular');
+    expect(app.values).toEqual([]);
   });
 
-  it('should render title', () => {
+  it('should disable intercept button initially', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
     fixture.detectChanges();
+
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, fizz-buzz-angular'
-    );
+    expect(
+      compiled.querySelector('button[type=submit]')?.getAttribute('disabled')
+    ).toBe('');
+    expect(app.formGroup.invalid).toBe(true);
+  });
+
+  it('should disable intercept button on invalid input', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+
+    app.formGroup.controls.input.setValue('notstop');
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(
+      compiled.querySelector('button[type=submit]')?.getAttribute('disabled')
+    ).toBe('');
+    expect(app.formGroup.invalid).toBe(true);
+  });
+
+  it('should enable intercept button once valid', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+
+    app.formGroup.controls.input.setValue('stop');
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(
+      compiled.querySelector('button[type=submit]')?.getAttribute('disabled')
+    ).toBe(null);
+    expect(app.formGroup.valid).toBe(true);
   });
 });
