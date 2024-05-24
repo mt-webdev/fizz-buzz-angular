@@ -7,13 +7,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { FizzBuzzColorsPipe } from './pipes/fizz-buzz.pipe';
 import { FizzBuzzGameService } from './services/fizz-buzz-game.service';
 import { FizzBuzzResult, FizzBuzzService } from './services/fizz-buzz.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, FizzBuzzColorsPipe],
   providers: [FizzBuzzService, FizzBuzzGameService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

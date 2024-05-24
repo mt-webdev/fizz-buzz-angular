@@ -1,27 +1,37 @@
 # FizzBuzzAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
+> Start via `npm run start` or `npx ng serve` (`npm install` initially)
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Roughly spent **1h 15min** on this project, I really appreciate the approuch of this coding challenge as
+it ensures to have knowledge about RxJs, async operations, testing & just a little bit of CSS. I chose
+`Tailwind` to save even more time, to allow rapid prototyping.
 
-## Code scaffolding
+The not so nice thing about my solution is, that I spread the actual `state` across to many layers
+in my opinion. But I am wearing our little one in a baby carrier in front of me right at this moment :-)
+Sorry for the excuse.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Services
 
-## Build
+I first implemented a basic `fizz-buzz.service.ts` (incl. spec) to have this out of the way. After some
+quick thougths I wanted the "game logic" to be separated from the component code, and implented another
+service `fizz-buzz-game.service.ts` (skipped testing, I am good with marble testing, but takes quite some time).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- I chose an `interval` to fullfill the 500ms requirement
+- regarding the stop mechanism I decided to go with a `takeUntil`
+- to stop after 100 emissions I simply chose `filter` and checked the index
+- last but not least, I `map`'ed the data to directly emit the fizzbuzz values
 
-## Running unit tests
+## AppComponent
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+I directly went for a "single component" solution, as well as chose `standalone` just to safe some setup time.
 
-## Running end-to-end tests
+To easily fullfill the stop mechanism, I went for a `FormGroup` (combined with `FormBuilder`) & specified the
+submit behavior rules as `Validators`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The last step was to subscribe to the "game$", but don't forget to `takeUntil(destroy)`.
 
-## Further help
+Regarding styling, I didn't spend much time and simply sprinkled a little tailwind here and there.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The rest should be pretty buch straight forward.
