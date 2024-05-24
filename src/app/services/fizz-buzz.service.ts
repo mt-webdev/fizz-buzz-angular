@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 
 export const FizzBuzzResults = {
-  none: 'none',
-  fizz: 'fizz',
-  buzz: 'buzz',
-  fizzbuzz: 'fizzbuzz',
+  Fizz: 'Fizz',
+  Buzz: 'Buzz',
+  FizzBuzz: 'FizzBuzz',
 } as const;
 
-export type FizzBuzzResult = keyof typeof FizzBuzzResults;
+export type FizzBuzzResult = keyof typeof FizzBuzzResults | number;
 
 @Injectable()
 export class FizzBuzzService {
@@ -25,17 +24,17 @@ export class FizzBuzzService {
 
   check(value: number): FizzBuzzResult {
     if (this.isFizzBuzz(value)) {
-      return FizzBuzzResults.fizzbuzz;
+      return FizzBuzzResults.FizzBuzz;
     }
 
     if (this.isFizz(value)) {
-      return FizzBuzzResults.fizz;
+      return FizzBuzzResults.Fizz;
     }
 
     if (this.isBuzz(value)) {
-      return FizzBuzzResults.buzz;
+      return FizzBuzzResults.Buzz;
     }
 
-    return FizzBuzzResults.none;
+    return value;
   }
 }
