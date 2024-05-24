@@ -4,7 +4,7 @@
 
 ## Overview
 
-Roughly spent **1h 15min** on this project, I really appreciate the approuch of this coding challenge as
+Roughly spent **1h 15min** on this project from zero to hero, I really appreciate the approuch of this coding challenge as
 it ensures to have knowledge about RxJs, async operations, testing & just a little bit of CSS. I chose
 `Tailwind` to save even more time, to allow rapid prototyping.
 
