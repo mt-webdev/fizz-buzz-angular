@@ -28,10 +28,10 @@ service `fizz-buzz-game.service.ts` (skipped testing, I am good with marble test
 I directly went for a "single component" solution, as well as chose `standalone` just to safe some setup time.
 
 To easily fullfill the stop mechanism, I went for a `FormGroup` (combined with `FormBuilder`) & specified the
-submit behavior rules as `Validators`.
+submit behavior rules via `Validators`.
 
 The last step was to subscribe to the "game$", but don't forget to `takeUntil(destroy)`.
 
 Regarding styling, I didn't spend much time and simply sprinkled a little tailwind here and there.
 
-The rest should be pretty buch straight forward.
+The rest should be pretty much straight forward.
